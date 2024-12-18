@@ -6,14 +6,24 @@ class Flat extends Component {
     selectFlat(flat);
   };
 
+  handleKeyUp = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.handleClick();
+    }
+  };
+
   render() {
-    const { name, imageUrl, price } = this.props.flat;
+    const { flat } = this.props;
+    const { name, imageUrl, price } = flat;
 
     return (
       <div
         className="card"
         style={{ backgroundImage: `url(${imageUrl})` }}
         onClick={this.handleClick}
+        onKeyUp={this.handleKeyUp}
+        role="button"
+        tabIndex="0"
       >
         <div className="card-category">
           {price}
